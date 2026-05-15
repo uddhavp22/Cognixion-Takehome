@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/uddhavs/Desktop/Cognixion-Takehome log --oneline)"
+    ]
+  }
+}

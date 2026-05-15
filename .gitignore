@@ -1,0 +1,14 @@
+# Secrets — never commit
+UnityProject/Assets/StreamingAssets/appsettings.local.json
+UnityProject/Assets/StreamingAssets/appsettings.local.json.meta
+
+# Builds (zip and link in README instead)
+Builds/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor clutter at repo root
+.idea/
+.vscode/

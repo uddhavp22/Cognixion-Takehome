@@ -174,7 +174,9 @@ Assets/Resources/Prompts/
 
 ## Demo
 
-*(Screen recording coming — will be linked here once uploaded)*
+https://github.com/uddhavp22/Cognixion-Takehome/raw/main/media/demo.mov
+
+<video src="media/demo.mov" controls width="100%"></video>
 
 ---
 

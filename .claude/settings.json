@@ -1,7 +1,33 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git -C /Users/uddhavs/Desktop/Cognixion-Takehome log --oneline)"
+      "Bash(git -C /Users/uddhavs/Desktop/Cognixion-Takehome log --oneline)",
+      "Bash(curl -L \"https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson\" -o /Users/uddhavs/Desktop/Cognixion-Takehome/UnityProject/Assets/StreamingAssets/world.geojson)",
+      "WebFetch(domain:docs.unity3d.com)",
+      "Bash(xargs ls)",
+      "Bash(find /Users/uddhavs/Desktop/Cognixion-Takehome/UnityProject/Library/PackageCache/com.unity.ugui@*/Runtime/TMP -name \"TextMeshProUGUI.cs\")",
+      "Bash(find /Users/uddhavs/Desktop/Cognixion-Takehome/UnityProject/Library/PackageCache/com.unity.ugui@*/Runtime/TMP/Resources -name \"*.asset\")",
+      "Bash(python3 -c ' *)",
+      "Bash(git -C /Users/uddhavs/Desktop/Cognixion-Takehome status)",
+      "Bash(git -C /Users/uddhavs/Desktop/Cognixion-Takehome log --oneline -5)",
+      "Bash(git -C /Users/uddhavs/Desktop/Cognixion-Takehome diff --stat HEAD)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(ls -lh \"/Users/uddhavs/Documents/Screen Recording 2026-05-18 at 4.36.59 PM.mov\")",
+      "Read(//Users/uddhavs/Documents/**)",
+      "Read(//Users/uddhavs/Desktop/**)",
+      "Read(//Users/uddhavs/Movies/**)",
+      "Bash(mkdir -p /Users/uddhavs/Desktop/Cognixion-Takehome/media && cp \"/Users/uddhavs/Documents/Screen Recording 2026-05-18 at 4.36.59 PM.mov\" \"/Users/uddhavs/Desktop/Cognixion-Takehome/media/demo.mov\")",
+      "Bash(xargs -0 ls -lh)",
+      "Bash(xargs -0 -I{} cp {} /Users/uddhavs/Desktop/Cognixion-Takehome/media/demo.mov)",
+      "Bash(git commit *)",
+      "Bash(brew install *)",
+      "Bash(brew list *)",
+      "Bash(ffmpeg -i /Users/uddhavs/Desktop/Cognixion-Takehome/media/demo.mov -an -c:v copy /Users/uddhavs/Desktop/Cognixion-Takehome/media/demo_muted.mov -y)"
+    ],
+    "additionalDirectories": [
+      "/Users/uddhavs/Documents"
     ]
   }
 }

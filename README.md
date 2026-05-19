@@ -31,7 +31,7 @@ If you select two countries, the app switches into fusion mode — the prompts e
 3. Copy `Assets/StreamingAssets/appsettings.example.json` → `appsettings.local.json` in the same folder and add your Anthropic API key
 4. Hit Play from the `01_Constraints` scene
 
-No API key? It falls back to hardcoded recipes automatically — the flow still works.
+If you don't have an API key it falls back to hardcoded recipes automatically the flow still works.
 
 ---
 
@@ -58,20 +58,17 @@ All prompts return strict JSON — no prose, no markdown wrapper. There's a `Str
 
 ## What I'd do differently with more time
 
-**Streaming** — the recipe call takes 2–4s on a cold request. The prefetch hides most of it but streaming tokens would let the recipe render progressively. `UnityWebRequest` doesn't support SSE so this would need a custom reader.
+**Streaming** — the recipe call takes 2–4s on a cold request. The prefetch hides most of it but streaming tokens would let the recipe render progressively,from what I understand  `UnityWebRequest` doesn't support SSE so this would probably need a custom reader.
 
-**API key handling** — right now the key lives in a gitignored local file. Fine for a prototype, not fine for a clinical product. In production the LLM calls go through a backend proxy.
+**API key handling** — right now the key lives in a gitignored local file. Which is fine for a prototype, but not fine for a clinical product. In production the LLM calls go through a backend proxy.
 
-**Cultural accuracy** — the prompts push hard for regional specificity but the LLM can still hallucinate plausible-sounding dishes. A real version would pair the LLM with a curated recipe bank reviewed by food writers from each region, especially for cuisines that tend to get flattened or misrepresented.
-
-**Dwell calibration** — there's a global dwell-time slider but real AAC/BCI apps calibrate per user during onboarding and adapt over time. The slider is a placeholder for that.
+**Cultural accuracy** — the prompts push hard for regional specificity but the LLM can still hallucinate plausible-sounding dishes. A real version would pair the LLM with a curated recipe bank reviewed by food writers from each region or check online recipies, especially for cuisines that tend to get flattened or misrepresented.
 
 **Persistence** — nothing survives an app restart. For a non-verbal user having to re-select dietary constraints every session is a real friction point. `PlayerPrefs` would be a quick fix.
 
 **Fallback depth** — the offline data is detailed for Morocco and Japan and generic for everything else. A proper offline corpus would need real coverage.
 
 ---
-
 ## Structure
 
 ```

@@ -9,7 +9,7 @@ A recipe explorer built in Unity 6 where every interaction with no clicks (hover
 You pick dietary constraints, hover over a country on a world map, choose a cooking mood from AI-generated options, and get a full recipe. Hover any ingredient in the recipe to get three substitution suggestions. 
 
 
-I've always loved cooking different cultures food as well trying to make fusion food, so this project was also an excuse for me experiment with new food! This project also has enough depth to make the LLM do real work (cultural specificity, dietary rules, fusion cooking) while keeping each step's decision space small enough to work well with dwell input. BCI users need tight option sets; a 6-card mood picker is a better fit than a search box.
+I've always loved cooking different cultures food as well trying to make fusion food, so this project was also an excuse for me experiment with new food! This project also has enough depth to make the LLM do real work (cultural specificity, dietary rules, fusion cooking) while keeping each step's decision space small enough to work well with dwell input. It can be especially helpful because BCI users need tight option sets to be efficient.
 
 **Scenes:**
 
@@ -31,15 +31,14 @@ If you select two countries, the app switches into fusion mode — the prompts e
 3. Copy `Assets/StreamingAssets/appsettings.example.json` → `appsettings.local.json` in the same folder and add your Anthropic API key
 4. Hit Play from the `01_Constraints` scene
 
-If you don't have an API key it falls back to hardcoded recipes automatically the flow still works.
-
+If you don't have an API key it falls back to hardcoded recipes.
 ---
 
 ## LLM integration
 
 **Model:** `claude-haiku-4-5` via the Anthropic API. Fast and cheap enough that latency isn't painful for a real-time UI.
 
-**Fallback chain:** Claude (12s timeout) → Gemini `gemini-2.0-flash` (v1beta) → hardcoded local data. If Claude is slow or down, Gemini picks up. If Gemini returns a 429, the scene falls through to the cached service. The user always sees something.
+**Fallback chain:** Claude (12s timeout) → Gemini `gemini-2.0-flash` (v1beta) → hardcoded local data. If Claude is slow or down, Gemini picks up. If Gemini returns a 429, the scene falls through to the cached service.
 
 **Four calls:**
 
@@ -48,12 +47,11 @@ If you don't have an API key it falls back to hardcoded recipes automatically th
 3. **Recipe** — full JSON: title, servings, time, ingredients, steps. Token budget is 1600 to avoid truncation on longer recipes
 4. **Substitutions** — 3 alternatives for a given ingredient, with the rest of the recipe included as context so suggestions actually fit the dish
 
-All prompts return strict JSON — no prose, no markdown wrapper. There's a `StripCodeFence()` fallback for when the model wraps output anyway despite being told not to.
+All prompts return strict JSON — no prose, no markdown wrapper. There's a `StripCodeFence()` fallback for when the model wraps output anyway. 
 
-**Prefetch:** the app fires the next call before the user commits, using dwell time as a free head start. Mood tiles start loading when a country is committed on the map; the recipe starts loading when a mood is committed. By the time the next scene loads, the response is usually already there.
+**Prefetch:** the app fires the next call before the user commits, using dwell time as a free head start. Mood tiles start loading when a country is committed on the map; the recipe starts loading when a mood is committed.
 
-**`ISelectionInput`:** all interaction goes through one interface with `OnHoverEnter`, `OnHoverExit`, and `OnCommit`. The current implementation is mouse dwell. Swapping in eye tracking or a BCI SDK means writing one new class — nothing else changes.
-
+**`ISelectionInput`:** all interaction goes through one interface with `OnHoverEnter`, `OnHoverExit`, and `OnCommit`. The current implementation is mouse dwell. Swapping in eye tracking or a BCI SDK means writing one new class.
 ---
 
 ## What I'd do differently with more time
